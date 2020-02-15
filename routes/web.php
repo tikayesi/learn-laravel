@@ -14,3 +14,17 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/anggota', 'AnggotaController@index');
+
+Route::get('/anggota/cari', 'AnggotaController@cari');
+
+Route::get('/anggota/tambah', 'AnggotaController@tambah');
+
+Route::post('/anggota/store', 'AnggotaController@store');
+
+Route::get('anggota/edit/{id}', 'AnggotaController@edit');
+
+Route::post('/anggota/update','AnggotaController@update');
+
+Route::get('/anggota/hapus/{id}','AnggotaController@hapus');
