@@ -2,32 +2,74 @@
 <html>
 <head>
 <title>Aplikasi Data Anggota Gereja</title>
+<link rel="stylesheet" href="/css/bootstrap.css">
 </head>
 <body>
  
-<h3>Data Anggota Gereja</h3>
- 
-	<a href="/anggota"> Kembali</a>
+	<nav class="navbar navbar-light bg-light justify-content-between">
+		<a href="#" class="navbar-left"><img src="../salib.png" style="max-width:50px; margin-top: -7px;"></a>
+		<a class="navbar-brand">TAMBAH DATA JEMAAT GEREJA BARU</a>
+		<a class="btn btn-success btn-sm" href="/anggota"><- Kembali</a>
+	  </nav>
 	
-	<br/>
-	<br/>
- 
+	<div class="container">
 	<form action="/anggota/store" method="post">
 		{{ csrf_field() }}
-		Nama <input type="text" name="nama" required="required"> <br/>
-		Nama Panggilan <input type="text" name="nama_panggilan" required="required"><br/>
-		Tempat Lahir <Input type="text" name="tempat_lahir" required="required"><br/>
-		Tanggal Lahir <Input type="date" name="tanggal_lahir" required="required"><br/>
-		Jenis Kelamin <Input type="text" name="jenis_kelamin" required="required"><br/>
-		Warga Negara <Input type="text" name="warga_negara" required="required"><br/>
-		Pekerjaan <Input type="text" name="pekerjaan" required="required"><br/>
-		Alamat <textarea name="alamat" required="required"></textarea> <br/>
-		Tanggal Baptis <input type="date" name="tanggal_baptis" required="required"><br/>
-		Baptis Oleh <Input type="text" name="baptis_oleh" required="required"><br/>
-		Keterangan <textarea name="keterangan"></textarea><br/>
+		
 		Foto <Input type="text" name="foto"><br/>
-		<input type="submit" value="Simpan Data">
+			<div class="row">
+			  <div class="col">
+				Nama <input class="form-control" type="text" name="nama" placeholder="Tulis Nama" required="required"> <br/>
+			  </div>
+			  <div class="col">
+				Nama Panggilan <input class="form-control" type="text" name="nama_panggilan" placeholder="Tulis Nama Panggilan" required="required"><br/>
+			  </div>
+			</div>
+			<div class="row">
+				<div class="col">
+					Tempat Lahir <Input class="form-control" type="text" name="tempat_lahir" placeholder="Tempat Lahir" required="required"><br/>
+				</div>
+				<div class="col">
+					Tanggal Lahir <Input class="form-control" type="date" name="tanggal_lahir" placeholder="Tanggal Lahir" required="required"><br/>
+				</div>
+			  </div>
+			  <div class="row">
+				<div class="col">
+					Baptis Oleh <Input class="form-control" type="text" name="baptis_oleh" placeholder="Baptis Oleh" required="required"><br/>
+				</div>
+				<div class="col">
+					Tanggal Baptis <input class="form-control" type="date" name="tanggal_baptis" placeholder="Tanggal Baptis" required="required"><br/>
+				</div>
+			  </div>
+			  <div class="row">
+				<div class="col">
+					Jenis Kelamin <select class="form-control" name="jenis_kelamin" required="required">
+						<option>Perempuan</option>
+						<option>Laki-Laki</option>
+					  </select>
+				</div>
+				<div class="col">
+					Warga Negara <Input class="form-control" type="text" name="warga_negara" placeholder="Warga Negara" required="required"><br/>
+				</div>
+				<div class="col">
+					Pekerjaan <Input class="form-control" type="text" name="pekerjaan" placeholder="Pekerjaan" required="required"><br/>
+				</div>
+			  </div>
+			  <div class="row">
+				<div class="col">
+					Alamat <textarea class="form-control" name="alamat" required="required"></textarea> <br/>
+				</div>
+				<div class="col">
+					Keterangan <textarea class="form-control" name="keterangan"></textarea><br/>
+				</div>
+			  </div>
+
+		<input class="btn btn-success btn-sm" type="submit" value="Simpan Data">
 	</form>
+	</div>
  
 </body>
+<nav class="navbar navbar-light bg-light justify-content-between">
+	<a>Create with love @2020</a>
+  </nav>
 </html>

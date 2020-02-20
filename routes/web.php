@@ -25,6 +25,8 @@ Route::post('/anggota/store', 'AnggotaController@store');
 
 Route::get('anggota/edit/{id}', 'AnggotaController@edit');
 
+Route::get('anggota/detail/{id}', 'AnggotaController@detail');
+
 Route::post('/anggota/update','AnggotaController@update');
 
 Route::get('/anggota/hapus/{id}','AnggotaController@hapus');

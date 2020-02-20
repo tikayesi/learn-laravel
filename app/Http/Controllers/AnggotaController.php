@@ -20,7 +20,11 @@ class AnggotaController extends Controller
  
     		// mengambil data dari table pegawai sesuai pencarian data
 		$anggota = DB::table('anggota')
-		->where('nama','like',"%".$cari."%")
+        ->where('nama','like',"%".$cari."%")
+        ->orWhere('nama_panggilan','like',"%".$cari."%")
+        ->orWhere('jenis_kelamin','like',"%".$cari."%")
+        ->orWhere('warga_negara','like',"%".$cari."%")
+        ->orWhere('pekerjaan','like',"%".$cari."%")
 		->paginate();
  
     		// mengirim data pegawai ke view index
@@ -80,6 +84,12 @@ public function update(Request $request)
 	]);
 	// alihkan halaman ke halaman pegawai
 	return redirect('/anggota');
+}
+
+public function detail($id)
+{
+    $anggota = DB::table('anggota')->where('id', $id)->get();
+    return view('detail', ['anggota' => $anggota]);
 }
 
 // method untuk hapus data pegawai

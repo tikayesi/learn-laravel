@@ -1,64 +1,68 @@
 <html>
 <head>
 	<title>Aplikasi Data Anggota Gereja</title>
+	<link rel="stylesheet" href="/css/bootstrap.css">
 </head>
 <body>
-	<h3>Data Anggota Gereja</h3>
-	<p>Cari Data Anggota :</p>
-	<form action="/anggota/cari" method="GET">
-		<input type="text" name="cari" placeholder="Cari Anggota .." value="{{ old('cari') }}">
-		<input type="submit" value="CARI">
-	</form>
-		
+	<nav class="navbar navbar-light bg-light justify-content-between">
+		<a href="#" class="navbar-left"><img src="salib.png" style="max-width:50px; margin-top: -7px;"></a>
+		<a class="navbar-brand">DATA JEMAAT GEPEKRIS TANJUNGPANDAN</a>
+		<form class="form-inline" action="/anggota/cari" method="GET">
+		  <input class="form-control mr-sm-2" type="search" name="cari" placeholder="Cari Jemaat .." value="{{ old('cari') }}" aria-label="Search">
+		  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cari</button>
+		</form>
+	  </nav>
+	<div class="container">
 	<br/>
  
-	<a href="/anggota/tambah"> + Tambah Anggota Baru</a>
+	<a class="btn btn-success btn-sm" href="/anggota/tambah"> + Tambah Data Jemaat</a>
 	
 	<br/>
 	<br/>
- 
-	<table border="1">
+	<div class="table-responsive">
+	<table class="table table-striped">
+		<thead>
 		<tr>
+			<th>No.</th>
 			<th>Nama</th>
 			<th>Panggilan</th>
 			<th>Tempat/Tanggal Lahir</th>
 			<th>Jenis Kelamin</th>
 			<th>Warga Negara</th>
 			<th>Pekerjaan</th>
-			<th>Alamat</th>
-			<th>Tanggal Baptis/Oleh</th>
-			<th>Keterangan</th>
-			<th>Foto</th>
+			<th>Tanggal Baptis</th>
 			<th>Action</th>
 		</tr>
-		@foreach($anggota as $p)
+		</thead>
+		<tbody>
+		@foreach($anggota as $key => $jemaat)
 		<tr>
-			<td>{{ $p->nama }}</td>
-			<td>{{ $p->nama_panggilan}}</td>
-			<td>{{ $p->tempat_lahir}}/{{ $p->tanggal_lahir}}</td>
-			<td>{{ $p->jenis_kelamin}}</td>
-			<td>{{ $p->warga_negara}}</td>
-			<td>{{ $p->pekerjaan}}</td>
-			<td>{{ $p->alamat }}</td>
-			<td>{{ $p->tanggal_baptis}}/{{ $p->baptis_oleh}}</td>
-			<td>{{ $p->keterangan}}</td>
-			<td>{{ $p->foto}}</td>
+			<th scope="row">{{ ++$key }}</th>
+			<td>{{ $jemaat->nama }}</td>
+			<td>{{ $jemaat->nama_panggilan}}</td>
+			<td>{{ $jemaat->tempat_lahir}}/{{ $jemaat->tanggal_lahir}}</td>
+			<td>{{ $jemaat->jenis_kelamin}}</td>
+			<td>{{ $jemaat->warga_negara}}</td>
+			<td>{{ $jemaat->pekerjaan}}</td>
+			<td>{{ $jemaat->tanggal_baptis}}</td>
 			<td>
-				<a href="/anggota/edit/{{ $p->id }}">Edit</a>
-				|
-				<a href="/anggota/hapus/{{ $p->id }}">Hapus</a>
+				<a class="btn btn-primary btn-sm" href="/anggota/detail/{{ $jemaat->id }}">Detail</a>
+				<a class="btn btn-primary btn-sm" href="/anggota/edit/{{ $jemaat->id }}">Edit</a>
+				<a class="btn btn-danger btn-sm" href="/anggota/hapus/{{ $jemaat->id }}">Hapus</a>
 			</td>
 		</tr>
 		@endforeach
+	</tbody>
 	</table>
-	<br/>
-	Halaman : {{ $anggota->currentPage() }} <br/>
-	Jumlah Data : {{ $anggota->total() }} <br/>
-	Data Per Halaman : {{ $anggota->perPage() }} <br/>
- 
- 
 	{{ $anggota->links() }}
+	</div>
+	</div>
+	<br/>
+
  
  
 </body>
+<nav class="navbar navbar-light bg-light justify-content-between">
+	<a>Create with love @2020</a>
+  </nav>
 </html>

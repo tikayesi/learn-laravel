@@ -2,34 +2,71 @@
 <html>
 <head>
 <title>Aplikasi Data Anggota Gereja</title>
+<link rel="stylesheet" href="/css/bootstrap.css">
 </head>
 <body>
-	<h3>Edit Anggota</h3>
- 
-	<a href="/anggota"> Kembali</a>
-	
-	<br/>
-	<br/>
- 
+	<nav class="navbar navbar-light bg-light justify-content-between">
+		<a href="#" class="navbar-left"><img src="../../salib.png" style="max-width:50px; margin-top: -7px;"></a>
+		<a class="navbar-brand">EDIT DATA JEMAAT GEREJA BARU</a>
+		<a class="btn btn-success btn-sm" href="/anggota"><- Kembali</a>
+	  </nav>
+	  <div class="container">
 	@foreach($anggota as $p)
 	<form action="/anggota/update" method="post">
 		{{ csrf_field() }}
-		<input type="hidden" name="id" value="{{ $p->id }}"> <br/>
-		Nama <input type="text" required="required" name="nama" value="{{ $p->nama }}"> <br/>
-		Nama Panggilan <input type="text" name="nama_panggilan" required="required" value="{{ $p->nama_panggilan }}"><br/>
-		Tempat Lahir <Input type="text" name="tempat_lahir" required="required" value="{{ $p->tempat_lahir }}"><br/>
-		Tanggal Lahir <Input type="date" name="tanggal_lahir" required="required" value="{{ $p->tanggal_lahir }}"><br/>
-		Jenis Kelamin <Input type="text" name="jenis_kelamin" required="required" value="{{ $p->jenis_kelamin }}"><br/>
-		Warga Negara <Input type="text" name="warga_negara" required="required" value="{{ $p->warga_negara }}"><br/>
-		Pekerjaan <Input type="text" name="pekerjaan" required="required" value="{{ $p->pekerjaan }}"><br/>
-		Alamat <textarea name="alamat" required="required">{{ $p->alamat }}</textarea> <br/>
-		Tanggal Baptis <input type="date" name="tanggal_baptis" required="required" value="{{ $p->tanggal_baptis }}"><br/>
-		Baptis Oleh <Input type="text" name="baptis_oleh" required="required" value="{{ $p->baptis_oleh }}"><br/>
-		Keterangan <textarea name="keterangan">{{ $p->keterangan }}</textarea><br/>
 		Foto <Input type="text" name="foto" value="{{ $p->foto }}"><br/>
-		<input type="submit" value="Simpan Data">
+			<div class="row">
+				<div class="col">
+				  Nama <input class="form-control" type="text" name="nama" value="{{ $p->nama }}" required="required"> <br/>
+				</div>
+				<div class="col">
+				  Nama Panggilan <input class="form-control" type="text" name="nama_panggilan" value="{{ $p->nama_panggilan }}" required="required"><br/>
+				</div>
+			  </div>
+			  <div class="row">
+				  <div class="col">
+					  Tempat Lahir <Input class="form-control" type="text" name="tempat_lahir" value="{{ $p->tempat_lahir }}" required="required"><br/>
+				  </div>
+				  <div class="col">
+					  Tanggal Lahir <Input class="form-control" type="date" name="tanggal_lahir" value="{{ $p->tanggal_lahir }}" required="required"><br/>
+				  </div>
+				</div>
+				<div class="row">
+				  <div class="col">
+					  Baptis Oleh <Input class="form-control" type="text" name="baptis_oleh" value="{{ $p->baptis_oleh }}" required="required"><br/>
+				  </div>
+				  <div class="col">
+					  Tanggal Baptis <input class="form-control" type="date" name="tanggal_baptis" value="{{ $p->tanggal_baptis }}" required="required"><br/>
+				  </div>
+				</div>
+				<div class="row">
+				  <div class="col">
+					  Jenis Kelamin <select class="form-control" name="jenis_kelamin" required="required">
+						  <option>{{ $p->jenis_kelamin }}</option>
+						  <option>Perempuan</option>
+						  <option>Laki-Laki</option>
+						</select>
+				  </div>
+				  <div class="col">
+					  Warga Negara <Input class="form-control" type="text" name="warga_negara" value="{{ $p->warga_negara }}" required="required"><br/>
+				  </div>
+				  <div class="col">
+					  Pekerjaan <Input class="form-control" type="text" name="pekerjaan" value="{{ $p->pekerjaan }}" required="required"><br/>
+				  </div>
+				</div>
+				<div class="row">
+				  <div class="col">
+					  Alamat <textarea class="form-control" name="alamat" required="required">{{ $p->alamat }}</textarea> <br/>
+				  </div>
+				  <div class="col">
+					  Keterangan <textarea class="form-control" name="keterangan">{{ $p->keterangan }}</textarea><br/>
+				  </div>
+				</div>
+  
+		  <input class="btn btn-success btn-sm" type="submit" value="Simpan Data">
 	</form>
 	@endforeach
+	  </div>
 		
  
 </body>
