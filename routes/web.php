@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 Route::get('/anggota', 'AnggotaController@index');
 
+Route::get('/anggota/export_excel', 'AnggotaController@export_excel');
+
 Route::get('/anggota/cari', 'AnggotaController@cari');
 
 Route::get('/anggota/tambah', 'AnggotaController@tambah');

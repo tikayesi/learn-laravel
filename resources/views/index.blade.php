@@ -14,9 +14,14 @@
 	  </nav>
 	<div class="container">
 	<br/>
- 
+	<div class="row">
+		<div class="col">
+	<a href="/anggota/export_excel" class="btn btn-success btn-sm" target="_blank">EXPORT EXCEL</a>
+		</div>
+		<div class="col-2">
 	<a class="btn btn-success btn-sm" href="/anggota/tambah"> + Tambah Data Jemaat</a>
-	
+		</div>
+	</div>
 	<br/>
 	<br/>
 	<div class="table-responsive">

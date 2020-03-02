@@ -5,12 +5,24 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use App\Anggota;
+ 
+use App\Exports\AnggotaExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\Controller;
+
 class AnggotaController extends Controller
 {
     public function index(){
         $anggota = DB::table('anggota')->paginate(10);
 
         return view('index', ['anggota' => $anggota]);
+    }
+
+    public function export_excel()
+	{
+        // return Excel::download(new AnggotaExport, 'anggota.xlsx');
+        return (new AnggotaExport)->download('anggota.xlsx');
     }
 
     public function cari(Request $request)
