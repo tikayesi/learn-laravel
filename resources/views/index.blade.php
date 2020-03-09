@@ -5,7 +5,7 @@
 </head>
 <body>
 	<nav class="navbar navbar-light bg-light justify-content-between">
-		<a href="#" class="navbar-left"><img src="salib.png" style="max-width:50px; margin-top: -7px;"></a>
+		<a href="#" class="navbar-left"><img src="salib.jpeg" style="max-width:70px; margin-top: -7px;"></a>
 		<a class="navbar-brand">DATA JEMAAT GEPEKRIS TANJUNGPANDAN</a>
 		<form class="form-inline" action="/anggota/cari" method="GET">
 		  <input class="form-control mr-sm-2" type="search" name="cari" placeholder="Cari Jemaat .." value="{{ old('cari') }}" aria-label="Search">
@@ -33,9 +33,9 @@
 			<th>Panggilan</th>
 			<th>Tempat/Tanggal Lahir</th>
 			<th>Jenis Kelamin</th>
-			<th>Warga Negara</th>
 			<th>Pekerjaan</th>
 			<th>Tanggal Baptis</th>
+			<th>Foto</th>
 			<th>Action</th>
 		</tr>
 		</thead>
@@ -45,15 +45,15 @@
 			<th scope="row">{{ ++$key }}</th>
 			<td>{{ $jemaat->nama }}</td>
 			<td>{{ $jemaat->nama_panggilan}}</td>
-			<td>{{ $jemaat->tempat_lahir}}/{{ $jemaat->tanggal_lahir}}</td>
+			<td>{{ $jemaat->tempat_lahir}}/{{ date('d-M-Y', strtotime($jemaat->tanggal_lahir))}}</td>
 			<td>{{ $jemaat->jenis_kelamin}}</td>
-			<td>{{ $jemaat->warga_negara}}</td>
 			<td>{{ $jemaat->pekerjaan}}</td>
-			<td>{{ $jemaat->tanggal_baptis}}</td>
+			<td>{{ date('d-M-Y', strtotime($jemaat->tanggal_baptis))}}</td>
+			<td><img width="75px" src="{{ url('/data_foto/'.$jemaat->foto) }}"></td>
 			<td>
 				<a class="btn btn-primary btn-sm" href="/anggota/detail/{{ $jemaat->id }}">Detail</a>
 				<a class="btn btn-primary btn-sm" href="/anggota/edit/{{ $jemaat->id }}">Edit</a>
-				<a class="btn btn-danger btn-sm" href="/anggota/hapus/{{ $jemaat->id }}">Hapus</a>
+				<a class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin akan menghapus {{ $jemaat->nama_panggilan}} ?')" href="/anggota/hapus/{{ $jemaat->id }}">Hapus</a>
 			</td>
 		</tr>
 		@endforeach

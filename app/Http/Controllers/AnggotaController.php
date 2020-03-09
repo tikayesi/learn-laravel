@@ -35,7 +35,7 @@ class AnggotaController extends Controller
         ->where('nama','like',"%".$cari."%")
         ->orWhere('nama_panggilan','like',"%".$cari."%")
         ->orWhere('jenis_kelamin','like',"%".$cari."%")
-        ->orWhere('warga_negara','like',"%".$cari."%")
+        ->orWhere('status','like',"%".$cari."%")
         ->orWhere('pekerjaan','like',"%".$cari."%")
 		->paginate();
  
@@ -50,8 +50,17 @@ class AnggotaController extends Controller
 
     public function store(Request $request)
 {
+    
+        $foto = $request->file('foto');
+ 
+		$nama_foto = time()."_".$foto->getClientOriginalName();
+ 
+      	        // isi dengan nama folder tempat kemana file diupload
+		$tujuan_upload = 'data_foto';
+		$foto->move($tujuan_upload,$nama_foto);
 
 	DB::table('anggota')->insert([
+        'no_anggota'
         'nama' => $request->nama,
         'nama_panggilan' => $request->nama_panggilan,
         'tempat_lahir' => $request->tempat_lahir,
@@ -63,7 +72,7 @@ class AnggotaController extends Controller
         'tanggal_baptis' => $request->tanggal_baptis,
         'baptis_oleh' => $request->baptis_oleh,
         'keterangan' => $request->keterangan,
-        'foto' => $request->foto
+        'foto' => $nama_foto
 
 	]);
 	return redirect('/anggota');
@@ -76,9 +85,18 @@ class AnggotaController extends Controller
         return view('edit', ['anggota' => $anggota]);
     }
 
+   
+
     // update data pegawai
 public function update(Request $request)
 {
+    $foto = $request->file('foto');
+ 
+    $nama_foto = time()."_".$foto->getClientOriginalName();
+
+              // isi dengan nama folder tempat kemana file diupload
+    $tujuan_upload = 'data_foto';
+    $foto->move($tujuan_upload,$nama_foto);
 	// update data pegawai
 	DB::table('anggota')->where('id',$request->id)->update([
         'nama' => $request->nama,
@@ -92,7 +110,7 @@ public function update(Request $request)
         'tanggal_baptis' => $request->tanggal_baptis,
         'baptis_oleh' => $request->baptis_oleh,
         'keterangan' => $request->keterangan,
-        'foto' => $request->foto
+        'foto' => $nama_foto
 	]);
 	// alihkan halaman ke halaman pegawai
 	return redirect('/anggota');

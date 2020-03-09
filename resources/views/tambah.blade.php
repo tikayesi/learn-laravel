@@ -7,16 +7,16 @@
 <body>
  
 	<nav class="navbar navbar-light bg-light justify-content-between">
-		<a href="#" class="navbar-left"><img src="../salib.png" style="max-width:50px; margin-top: -7px;"></a>
+		<a href="#" class="navbar-left"><img src="../salib.jpeg" style="max-width:70px; margin-top: -7px;"></a>
 		<a class="navbar-brand">TAMBAH DATA JEMAAT GEREJA BARU</a>
 		<a class="btn btn-success btn-sm" href="/anggota"><- Kembali</a>
 	  </nav>
 	
 	<div class="container">
-	<form action="/anggota/store" method="post">
+	<form action="/anggota/store" method="post" enctype="multipart/form-data">
 		{{ csrf_field() }}
 		
-		Foto <Input type="text" name="foto"><br/>
+		Foto <Input type="file" name="foto"><br/>
 			<div class="row">
 			  <div class="col">
 				Nama <input class="form-control" type="text" name="nama" placeholder="Tulis Nama" required="required"> <br/>

@@ -32,3 +32,7 @@ Route::get('anggota/detail/{id}', 'AnggotaController@detail');
 Route::post('/anggota/update','AnggotaController@update');
 
 Route::get('/anggota/hapus/{id}','AnggotaController@hapus');
+
+Route::get('/upload', 'UploadController@upload');
+
+Route::post('/upload/proses', 'UploadController@proses_upload');
