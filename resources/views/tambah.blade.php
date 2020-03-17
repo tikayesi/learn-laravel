@@ -15,8 +15,20 @@
 	<div class="container">
 	<form action="/anggota/store" method="post" enctype="multipart/form-data">
 		{{ csrf_field() }}
-		
 		Foto <Input type="file" name="foto"><br/>
+			<div class="row">
+				<div class="col">
+				  Nomor Anggota <input class="form-control" type="text" name="no_anggota" placeholder="Tulis Nomor Anggota" required="required"> <br/>
+				</div>
+				<div class="col">
+				  Status <select class="form-control" name="status" required="required">
+					<option>Aktif</option>
+					<option>Inaktif</option>
+					<option>Meninggal</option>
+					<option>Lain-lain</option>
+				  </select>
+				</div>
+			  </div>
 			<div class="row">
 			  <div class="col">
 				Nama <input class="form-control" type="text" name="nama" placeholder="Tulis Nama" required="required"> <br/>
@@ -70,6 +82,6 @@
  
 </body>
 <nav class="navbar navbar-light bg-light justify-content-between">
-	<a>Create with love @2020</a>
+	<a>© Copyright 2020 Create with ❤</a>
   </nav>
 </html>

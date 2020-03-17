@@ -29,6 +29,7 @@
 		<thead>
 		<tr>
 			<th>No.</th>
+			<th>Nomor Anggota</th>
 			<th>Nama</th>
 			<th>Panggilan</th>
 			<th>Tempat/Tanggal Lahir</th>
@@ -36,6 +37,7 @@
 			<th>Pekerjaan</th>
 			<th>Tanggal Baptis</th>
 			<th>Foto</th>
+			<th>Status</th>
 			<th>Action</th>
 		</tr>
 		</thead>
@@ -43,6 +45,7 @@
 		@foreach($anggota as $key => $jemaat)
 		<tr>
 			<th scope="row">{{ ++$key }}</th>
+			<td>{{ $jemaat->no_anggota }}</td>
 			<td>{{ $jemaat->nama }}</td>
 			<td>{{ $jemaat->nama_panggilan}}</td>
 			<td>{{ $jemaat->tempat_lahir}}/{{ date('d-M-Y', strtotime($jemaat->tanggal_lahir))}}</td>
@@ -50,6 +53,7 @@
 			<td>{{ $jemaat->pekerjaan}}</td>
 			<td>{{ date('d-M-Y', strtotime($jemaat->tanggal_baptis))}}</td>
 			<td><img width="75px" src="{{ url('/data_foto/'.$jemaat->foto) }}"></td>
+			<td> {{ $jemaat-> status}} </td>
 			<td>
 				<a class="btn btn-primary btn-sm" href="/anggota/detail/{{ $jemaat->id }}">Detail</a>
 				<a class="btn btn-primary btn-sm" href="/anggota/edit/{{ $jemaat->id }}">Edit</a>
@@ -68,6 +72,6 @@
  
 </body>
 <nav class="navbar navbar-light bg-light justify-content-between">
-	<a>Create with love @2020</a>
+	<a>© Copyright 2020 Create with ❤</a>
   </nav>
 </html>

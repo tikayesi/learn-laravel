@@ -18,6 +18,14 @@
 			<div>
 				<td><img width="100px" src="{{ url('/data_foto/'.$p->foto) }}"></td>
 			</div>
+			<div class="row">
+				<div class="col">
+				  Nomor Anggota<input class="form-control" type="text" name="no_anggota" value="{{ $p->no_anggota }}" required="required" readonly> <br/>
+				</div>
+				<div class="col">
+				  Status <input class="form-control" type="text" name="status" value="{{ $p->status }}" required="required" readonly><br/>
+				</div>
+			  </div>
 				<div class="row">
 					<div class="col">
 					  Nama <input class="form-control" type="text" name="nama" value="{{ $p->nama }}" required="required" readonly> <br/>

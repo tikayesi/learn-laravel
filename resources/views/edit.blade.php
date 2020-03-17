@@ -19,6 +19,20 @@
 			<td><img width="100px" src="{{ url('/data_foto/'.$p->foto) }}"></td>
 			<Input type="file" name="foto"><br/>
 		</div>
+		<div class="row">
+			<div class="col">
+			  Nomor Anggota <input class="form-control" type="text" name="no_anggota" value="{{ $p->no_anggota }}" required="required"> <br/>
+			</div>
+			<div class="col">
+			  Status <select class="form-control" name="status" required="required">
+				<option>{{ $p->status }}</option>
+				<option>Aktif</option>
+				<option>Inaktif</option>
+				<option>Meninggal</option>
+				<option>Lain-lain</option>
+			  </select>
+			</div>
+		  </div>
 			<div class="row">
 				<div class="col">
 				  Nama <input class="form-control" type="text" name="nama" value="{{ $p->nama }}" required="required"> <br/>
