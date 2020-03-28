@@ -2,6 +2,8 @@
     <thead>
         <tr>
             <th>No</th>
+            <th>No Anggota</th>
+            <th>Status</th>
             <th>Nama</th>
             <th>Nama Panggilan</th>
             <th>Tempat Lahir</th>
@@ -13,6 +15,7 @@
             <th>Tanggal Baptis</th>
             <th>Dibaptis Oleh</th>
             <th>Keterangan</th>
+            <th>Foto</th>
         </tr>
     </thead>
     <tbody>
@@ -20,6 +23,8 @@
     @foreach($anggota as $a)
         <tr>
             <td>{{ $no++ }}</td>
+            <td>{{ $a->no_anggota }}</td>
+            <td>{{ $a->status }}</td>
             <td>{{ $a->nama }}</td>
             <td>{{ $a->nama_panggilan }}</td>
             <td>{{ $a->tempat_lahir }}</td>
@@ -31,6 +36,7 @@
             <td>{{ $a->tanggal_baptis}}</td>
             <td>{{ $a->baptis_oleh}}</td>
             <td>{{ $a->keterangan}}</td>
+            <td>{{ $a->foto}}</td>
         </tr>
     @endforeach
     </tbody>
